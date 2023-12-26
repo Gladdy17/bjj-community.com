@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+  port:  5432
+  username:  gladdy
+  password:  123456
+
+development:
+  <<: *default
+  database: bjj_community_development
+
+test:
+  <<: *default
+  database: bjj_community_test
+
+production:
+  <<: *default
+  database: bjj_community_production
+  username: bjj_community
+  password: <%= ENV["BJJ_COMMUNITY_DATABASE_PASSWORD"] %>
